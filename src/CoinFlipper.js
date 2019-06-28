@@ -20,22 +20,30 @@ class CoinFlipper extends Component {
   handleFlip = () => {
     let randomIndex = Math.floor(Math.random() * this.props.sides.length);
     let chosenSide = this.props.sides[randomIndex];
-    console.log(chosenSide);
-    this.setState({
-      currentSide: chosenSide
-    });
-   
-    if(chosenSide === 'heads') {
-      this.setState({
-        headsCounter: this.state.headsCounter + 1
-      })
-    } else {
-      this.setState({
-        tailsCounter: this.state.tailsCounter + 1
-      })
-    }
+    this.setState(curState => {
+      return {
+        currentSide: chosenSide,
+        flipCounter: curState.flipCounter + 1,
+        headsCounter: curState.headsCounter + (chosenSide === 'heads' ? 1 : 0),
+        tailsCounter: curState.tailsCounter + (chosenSide === 'tails' ? 1 : 0)
+      }
+    })
 
-    this.setState({flipCounter: this.state.flipCounter + 1})
+    // this.setState({
+    //   currentSide: chosenSide
+    // });
+   
+    // if(chosenSide === 'heads') {
+    //   this.setState({
+    //     headsCounter: this.state.headsCounter + 1
+    //   })
+    // } else {
+    //   this.setState({
+    //     tailsCounter: this.state.tailsCounter + 1
+    //   })
+    // }
+
+    // this.setState({flipCounter: this.state.flipCounter + 1})
   }
 
   render(){
