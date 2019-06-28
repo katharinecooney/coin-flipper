@@ -1,0 +1,8 @@
+.Coin {
+  width: 9rem;
+  padding: 20px;
+}
+
+.Coin img {
+  display: block;
+}
